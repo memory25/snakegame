@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Snake</title>
+    <link rel="stylesheet" href="css/snake.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="map">
+            <div id="snake" class="turnTop"></div>
+            <div id="snakeBodyShadow"></div>
+            <div class="foodwrap">
+                <div id="snakeFood"></div>
+            </div>
+            <div class="scorewrap">
+                <div id="scoreNav-1" class="scoreNav-1"></div>
+                <div id="scoreNav-2" class="scoreNav-2"></div>
+                <div id="scoreNav-3" class="scoreNav-3"></div>
+                <div id="scoreNav-4" class="scoreNav-4"></div>
+                <div id="scoreGreat" class="displayNone"></div>
+                <div id="scoreNum" class="scoreNum">
+                    Score
+                    <br>Speed
+                    <br>Level
+                    <p id="scoreCount">0</p>
+                    <p id="speedCount">1</p>
+                    <p id="showDifficult">---</p>
+                </div>
+                <input type="text" id="snakeLength" placeholder="BodyLength:3~300">
+                <div id="difficultNormal">Normal</div>
+                <div id="difficultHard">Hard</div>
+                <div id="difficultHell">Hell</div>
+                <div id="starGame">Start</div>
+                <div id="gameover" class="displayNone">Game Over</div>
+                <div id="again" class="displayNone">Again</div>
+            </div>
+        </div>
+        <div id="tt" class="test"></div>
+    </div>
+
+    <script src="js/snake.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,357 @@
+@charset "UTF-8";
+/* line 21, ../sass/snake.sass */
+body {
+  background: black;
+}
+
+/* line 23, ../sass/snake.sass */
+.wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*地圖 */
+/* line 30, ../sass/snake.sass */
+.map {
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(270deg, #b8c5e0 20px, transparent 0), linear-gradient(180deg, #b8c5e0 20px, transparent 0), linear-gradient(90deg, #b8c5e0 20px, transparent 0), linear-gradient(0deg, #b8c5e0 20px, transparent 0), repeating-linear-gradient(0deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), repeating-linear-gradient(90deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), #e1e9f7;
+  position: relative;
+}
+
+/*蛇頭 */
+/* line 38, ../sass/snake.sass */
+#snake, #snakeBodyShadow, #snakeFood {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  transform: translate(0px, 0px);
+}
+
+/*蛇的方向 */
+/* line 47, ../sass/snake.sass */
+.turnTop {
+  border-radius: 100% 100% 0 0;
+  background: radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) 5px 0, radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -4px 0, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) 5px 0, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -4px 0, #f20437;
+  animation: eyesBlinkTop 1s linear infinite;
+}
+
+/* line 52, ../sass/snake.sass */
+.turnBottom {
+  border-radius: 0 0 100% 100%;
+  background: radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) 5px 0, radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -4px 0, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) 5px 0, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -4px 0, #f20437;
+  animation: eyesBlinkTop 1s linear infinite;
+}
+
+/* line 57, ../sass/snake.sass */
+.turnLeft {
+  border-radius: 100% 0 0 100%;
+  background: radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -1px -5px, radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -1px 5px, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -1px -5px, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -1px 5px, #f20437;
+  animation: eyesBlinkLeft 1s linear infinite;
+}
+
+/* line 62, ../sass/snake.sass */
+.turnRight {
+  border-radius: 0 100% 100% 0;
+  background: radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -1px -5px, radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -1px 5px, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -1px -5px, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -1px 5px, #f20437;
+  animation: eyesBlinkLeft 1s linear infinite;
+}
+
+@keyframes eyesBlinkTop {
+  30% {
+    background: radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) 5px 0, radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -4px 0, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) 5px 0, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -4px 0, #f20437;
+  }
+  to {
+    background: #f20437;
+  }
+}
+@keyframes eyesBlinkLeft {
+  30% {
+    background: radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -1px -5px, radial-gradient(#000000 2px, rgba(0, 0, 0, 0) 0px) -1px 5px, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -1px -5px, radial-gradient(#ffffff 4px, rgba(0, 0, 0, 0) 0px) -1px 5px, #f20437;
+  }
+  to {
+    background: #f20437;
+  }
+}
+/*蛇的方向 */
+/*蛇的身體 */
+/* line 75, ../sass/snake.sass */
+#snakeBodyShadow {
+  background: transparent;
+}
+
+/*食物 */
+/* line 80, ../sass/snake.sass */
+#snakeFood {
+  width: 10px;
+  height: 10px;
+  background: #FFF;
+  border-radius: 100%;
+  animation: anifood 2s infinite linear;
+}
+
+@keyframes anifood {
+  0% {
+    box-shadow: 0 0 2px 2px rgba(255, 153, 109, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 2px 8px rgba(255, 252, 107, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 2px 2px rgba(255, 153, 109, 0.8);
+  }
+}
+/*食物 */
+/*周邊分數 */
+/* line 97, ../sass/snake.sass */
+#scoreNav-1 {
+  position: absolute;
+  background: repeating-linear-gradient(0deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), repeating-linear-gradient(90deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), linear-gradient(0deg, red 20px, transparent 0);
+  width: 0px;
+  height: 20px;
+}
+
+/* line 102, ../sass/snake.sass */
+#scoreNav-2 {
+  position: absolute;
+  transform-origin: 10px 10px;
+  transform: translate(580px, 0px) rotate(90deg);
+  background: repeating-linear-gradient(0deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), repeating-linear-gradient(90deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), linear-gradient(0deg, red 20px, transparent 0);
+  width: 0px;
+  height: 20px;
+}
+
+/* line 109, ../sass/snake.sass */
+#scoreNav-3 {
+  position: absolute;
+  transform-origin: 10px 10px;
+  transform: translate(580px, 580px) rotate(180deg);
+  background: repeating-linear-gradient(0deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), repeating-linear-gradient(90deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), linear-gradient(0deg, red 20px, transparent 0);
+  width: 0px;
+  height: 20px;
+}
+
+/* line 116, ../sass/snake.sass */
+#scoreNav-4 {
+  position: absolute;
+  transform-origin: 10px 10px;
+  transform: translate(0px, 580px) rotate(-90deg);
+  background: repeating-linear-gradient(0deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), repeating-linear-gradient(90deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), linear-gradient(0deg, red 20px, transparent 0);
+  width: 0px;
+  height: 20px;
+}
+
+/* line 124, ../sass/snake.sass */
+#scoreGreat {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  animation: aniscoreGreat 2s linear infinite;
+}
+
+/* line 129, ../sass/snake.sass */
+.displayNone {
+  display: none;
+}
+
+@keyframes aniscoreGreat {
+  to {
+    background: linear-gradient(270deg, rgba(165, 28, 94, 0.6) 20px, transparent 0), linear-gradient(180deg, rgba(165, 28, 94, 0.6) 20px, transparent 0), linear-gradient(90deg, rgba(165, 28, 94, 0.6) 20px, transparent 0), linear-gradient(0deg, rgba(165, 28, 94, 0.6) 20px, transparent 0), repeating-linear-gradient(0deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px), repeating-linear-gradient(90deg, #b8c5e0 0px, transparent 2px, transparent 18px, #b8c5e0 20px);
+  }
+}
+/*周邊分數 */
+/*中間分數計算 */
+/* line 137, ../sass/snake.sass */
+#scoreNum {
+  width: 300px;
+  height: 100px;
+  transform: translate(150px, 100px);
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.2);
+  user-select: none;
+  cursor: default;
+}
+/* line 145, ../sass/snake.sass */
+#scoreNum #scoreCount {
+  width: 120px;
+  text-align: right;
+  transform: translate(110px, -179px);
+}
+/* line 149, ../sass/snake.sass */
+#scoreNum #speedCount {
+  width: 120px;
+  text-align: right;
+  transform: translate(110px, -220px);
+}
+/* line 153, ../sass/snake.sass */
+#scoreNum #showDifficult {
+  width: 120px;
+  text-align: right;
+  transform: translate(110px, -260px);
+}
+
+/*中間分數計算 */
+/*模式 開始按鍵 結束 各式button */
+/* line 160, ../sass/snake.sass */
+#snakeLength {
+  transform: translate(116px, 200px);
+  text-align: center;
+  background: transparent;
+  border: transparent;
+  font-size: 30px;
+  box-shadow: 0 0 0 1920px rgba(0, 0, 0, 0.4);
+}
+
+/* line 167, ../sass/snake.sass */
+#starGame {
+  position: absolute;
+  bottom: 20%;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #B8D6FF 0, #FFB8BE 100%);
+  font-family: Microsoft JhengHei;
+  color: #a30000;
+  font-weight: bolder;
+  cursor: pointer;
+  user-select: none;
+}
+/* line 183, ../sass/snake.sass */
+#starGame:hover {
+  animation: linear 2s anifood infinite;
+}
+
+/* line 186, ../sass/snake.sass */
+#difficultNormal, #difficultHard, #difficultHell, #again {
+  position: absolute;
+  bottom: 25%;
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  left: 50%;
+  font-size: 20px;
+  border-radius: 20px;
+  background: rgba(132, 232, 104, 0.8);
+  font-family: Microsoft JhengHei;
+  color: #a30000;
+  font-weight: bolder;
+  cursor: pointer;
+  user-select: none;
+  transform: translate(-200%, -150%);
+}
+/* line 202, ../sass/snake.sass */
+#difficultNormal:hover, #difficultHard:hover, #difficultHell:hover, #again:hover {
+  animation: linear 2s anifood infinite;
+}
+
+/* line 204, ../sass/snake.sass */
+#difficultHard {
+  transform: translate(-50%, -150%);
+  background: rgba(255, 200, 112, 0.8);
+}
+
+/* line 208, ../sass/snake.sass */
+#difficultHell {
+  transform: translate(100%, -150%);
+  background: rgba(255, 107, 107, 0.8);
+}
+
+/* line 212, ../sass/snake.sass */
+.difficultCheckin {
+  border: solid 4px red;
+  animation: linear 1s anifood infinite;
+}
+
+/* line 215, ../sass/snake.sass */
+#gameover {
+  position: absolute;
+  bottom: 25%;
+  text-align: center;
+  left: 50%;
+  font-size: 20px;
+  border-radius: 20px;
+  background: #4283dd;
+  font-family: Microsoft JhengHei;
+  color: #a30000;
+  font-weight: bolder;
+  user-select: none;
+  transform: translate(-50%, -140px);
+  width: 500px;
+  height: 30px;
+  animation: 1s linear aniGameOver1, 2s linear aniGameOverColor infinite;
+}
+
+@keyframes aniGameOver {
+  0% {
+    font-size: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    transform: translate(-50%, 140px) rotate(0);
+    border-radius: 100%;
+  }
+  50% {
+    width: 750px;
+    height: 200px;
+    line-height: 200px;
+    transform: translate(-50%, -350px) rotate(720deg);
+  }
+  75% {
+    width: 750px;
+    height: 200px;
+    line-height: 200px;
+    transform: translate(-50%, -350px) rotate(540deg);
+  }
+  100% {
+    transform: translate(-50%, -140px) rotate(360deg);
+    width: 500px;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+@keyframes aniGameOverColor {
+  100% {
+    background: red;
+  }
+}
+/* line 258, ../sass/snake.sass */
+#again {
+  transform: translate(-50%, -100px);
+  width: 500px;
+  height: 30px;
+  animation: 2s aniAgain linear infinite;
+}
+
+@keyframes aniAgain {
+  0% {
+    transform: translate(-50%, -100px);
+  }
+  25% {
+    transform: translate(-50%, -110px);
+  }
+  50% {
+    transform: translate(-50%, -100px);
+  }
+  75% {
+    transform: translate(-50%, -90px);
+  }
+  100% {
+    transform: translate(-50%, -100px);
+  }
+}
+/*模式 開始按鍵 結束 各式button */
+/* line 277, ../sass/snake.sass */
+.test {
+  width: 20px;
+  height: 20px;
+  background: black;
+  display: inline-block;
+}
