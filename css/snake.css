@@ -286,7 +286,7 @@ body {
   transform: translate(-50%, -140px);
   width: 500px;
   height: 30px;
-  animation: 1s linear aniGameOver1, 2s linear aniGameOverColor infinite;
+  animation: 1s linear aniGameOver, 2s linear aniGameOverColor infinite;
 }
 
 @keyframes aniGameOver {
